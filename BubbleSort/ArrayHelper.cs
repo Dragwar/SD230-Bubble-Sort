@@ -51,6 +51,7 @@ namespace BubbleSort
 
                     if (secondNumber.HasValue && sortBy(firstNumber, secondNumber.Value))
                     {
+                        // swap places
                         result[i] = secondNumber.Value;
                         result[i + 1] = firstNumber;
                     }

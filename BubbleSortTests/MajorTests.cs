@@ -31,7 +31,7 @@ namespace BubbleSortTests
 
         /// <summary>
         ///     Tests if my Array.MyBubbleSort()'s results are identical to the Array.Sort()'s results
-        ///     (Test Fails when mySort is not identical)
+        ///     (Test only fails when mySort is not identical)
         /// </summary>
         [TestMethod]
         public void TestToMatchBuiltInSortMethod()
@@ -39,18 +39,25 @@ namespace BubbleSortTests
             List<int[]> list = new List<int[]>();
             BuildRandomIntArrayList(list);
 
+            // Test all intArrays
             foreach (int[] intArray in list)
             {
                 List<int> temp = intArray.ToList();
+
+                // Built in Sort method
+                // Using the List<>.Sort() method to compare my sort
                 temp.Sort();
                 int[] notMySort = temp.ToArray();
+
+                // My Sort method
                 int[] mySort = intArray.MyBubbleSort(null, (a, b) => a > b);
 
+                // iterate over the current intArray (and compare its elements to my sort)
                 for (int i = 0; i < intArray.Length; i++)
                 {
                     if (notMySort[i] != mySort[i])
                     {
-                        Assert.Fail("MyBubbleSort failed to sort completely");
+                        Assert.Fail($"MyBubbleSort failed to sort completely (mine:{mySort[i]} !mine:{notMySort[i]})");
                     }
                 }
             }
