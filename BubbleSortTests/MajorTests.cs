@@ -34,6 +34,7 @@ namespace BubbleSortTests
         ///     (Test only fails when mySort is not identical)
         /// </summary>
         [TestMethod]
+        [Owner(owner: "Everett")]
         public void TestToMatchBuiltInSortMethod()
         {
             List<int[]> list = new List<int[]>();
@@ -51,15 +52,14 @@ namespace BubbleSortTests
 
                 // My Sort method
                 int[] mySort = intArray.MyBubbleSort(null, (a, b) => a > b);
+                
 
-                // iterate over the current intArray (and compare its elements to my sort)
                 for (int i = 0; i < intArray.Length; i++)
                 {
-                    if (notMySort[i] != mySort[i])
-                    {
-                        Assert.Fail($"MyBubbleSort failed to sort completely (mine:{mySort[i]} !mine:{notMySort[i]})");
-                    }
+                    // iterate over the current intArray (and compare its elements to my sort)
+                    Assert.AreEqual(notMySort[i], mySort[i], "MyBubbleSort to match built in sort method");
                 }
+
             }
         }
     }

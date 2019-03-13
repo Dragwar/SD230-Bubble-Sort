@@ -6,23 +6,18 @@ namespace BubbleSort
     {
         public static void Main()
         {
-            int[] array = new int[] { 8, -1, 7, 9, 4, -10, 0, 6, 2 };
             Console.CursorVisible = false;
 
-            RunMyBubbleSort(array);
+            // Solution looks like: { -10, -1, 0, 2, 4, 6, 7, 8, 9 };
+            int[] array = new int[] { 8, -1, 7, 9, 4, -10, 0, 6, 2 };
+            ArrayHelper.DisplayNumbersOfArray("Original Array: ", array);
+
+            // My sort
+            int[] sortedArray = array.MyBubbleSort((a, b) => a > b);
+            ArrayHelper.DisplayNumbersOfArray("Result Array:  ", sortedArray);
 
             Console.WriteLine("Press any key to exit . . .");
             Console.ReadKey(false);
         }
-
-        public static void RunMyBubbleSort(int[] array)
-        {
-            ArrayHelper.DisplayNumbersOfArray("Original Array: ", array);
-
-            int[] sortedArray = array.MyBubbleSort(null, (a, b) => a > b);
-
-            ArrayHelper.DisplayNumbersOfArray("Result Array:  ", sortedArray);
-        }
     }
-
 }
